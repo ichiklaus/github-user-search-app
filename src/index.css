@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root,
+html,
+body,
+.App {
+  height: 100%;
+}
+:root {
+  --btn-primary-bg: #0079ff;
+  --btn-primary-hover-bg: #60abff;
+  --no-result-color: #f74646;
+
+  /*==== Dark theme colors ====*/
+  --body-bg-color: #141d2f;
+  --inner-bg-color: #1e2a47;
+  --logo-color: #fff;
+  --secondary-text-color: #697c9a;
+  --secondary-heading-color: #697c9ad2;
+}
+
+:root body.light-theme {
+  /*==== Light theme colors ====*/
+  --body-bg-color: #f6f8ff;
+  --inner-bg-color: #fefefe;
+  --logo-color: #222731;
+  --secondary-text-color: #697c9a;
+  --secondary-heading-color: #2b3442;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  font-size: 16px;
+  transition: background-color 300ms ease-in-out;
+  background-color: var(--body-bg-color);
+}
+
+.btn-search--blue:not(:hover) {
+  background-color: var(--btn-primary-bg);
+  transition: 300ms ease-in-out;
+}
+
+.btn-search--blue:hover {
+  background-color: var(--btn-primary-hover-bg);
+  transition: 500ms linear;
+}
+
+#search-user,
+#user-card {
+  background-color: var(--inner-bg-color) !important;
+  caret-color: var(--logo-color);
+}
+
+.user-stats--bg {
+  background-color: var(--body-bg-color);
+}
+
+.main-text--white {
+  color: var(--logo-color);
+}
+
+.secondary-text-color {
+  color: var(--secondary-text-color);
+}
+
+.secondary-heading-color {
+  color: var(--secondary-heading-color);
+}
+
+@media (min-width: 1280px) {
+  .icon.icon-search::before {
+    left: 2rem !important;
+  }
+}
+
+.icon.icon-search::before {
+  content: url("./assets/icon-search.svg");
+  position: absolute;
+  left: 0.75rem;
+}
+
+.icon.icon-city::before {
+  content: url("./assets/icon-location.svg");
+}
+.icon.icon-social::before {
+  content: url("./assets/icon-twitter.svg");
+}
+.icon.icon-website::before {
+  content: url("./assets/icon-website.svg");
+}
+.icon.icon-company::before {
+  content: url("./assets/icon-company.svg");
+}
+#theme-toggler {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  column-gap: 10px;
+}
+
+.icon.icon-moon {
+  text-align: center;
+  margin-top: 0.35rem;
+}
+
+.icon.icon-moon:hover {
+  cursor: pointer;
+}
+
+.icon.icon-moon::after {
+  content: url("./assets/icon-sun.svg");
+}
+
+#search-user:active, #search-user:focus {
+  background-color: var(--inner-bg-color) !important;
+  caret-color: var(--inner-bg-color) !important;
+}
