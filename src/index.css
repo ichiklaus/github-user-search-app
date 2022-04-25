@@ -71,6 +71,10 @@ body {
   color: var(--logo-color);
 }
 
+.text--blue {
+  color: var(--btn-primary-bg) !important;
+}
+
 .secondary-text-color {
   color: var(--secondary-text-color);
 }

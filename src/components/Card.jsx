@@ -2,6 +2,7 @@
 function Card({
   user: {
     login,
+    html_url,
     name,
     avatar_url,
     company,
@@ -30,7 +31,7 @@ function Card({
   return (
     <div
       id="user-card"
-      className="flex flex-col justify-center items-center py-6 gap-y-6 xl:flex-initial xl:flex-row xl:justify-around rounded-xl text-center xl:text-left"
+      className="flex flex-col justify-center items-center px-3 py-6 gap-y-6 xl:flex-initial xl:flex-row xl:justify-around rounded-xl text-center xl:text-left"
     >
       <div
         id="user-profile"
@@ -38,12 +39,12 @@ function Card({
       >
         <div
           id="user-main"
-          className="flex flex-col xl:flex-col xl:justify-around text-left gap-y-6"
+          className="flex flex-col flex-wrap xl:flex-col xl:justify-around text-left gap-y-6 "
         >
           <div className="flex xl:flex-col xl:justify-around text-left xl:relative gap-x-6">
             <div
               id="user-picture"
-              className="xl:absolute xl:-left-1/4 xl:top-0"
+              className="xl:absolute xl:-left-36 xl:top-0"
             >
               <img
                 src={avatar_url}
@@ -55,7 +56,10 @@ function Card({
               <div className="flex flex-col xl:flex-row xl:justify-between">
                 <p id="userByName" className="main-text--white flex flex-col">
                   <span>{name}</span>
-                  <span>{`@${login}`}</span>
+                  <a className="hover:underline text--blue" href={html_url}>
+                    {" "}
+                    <span>{`@${login}`}</span>
+                  </a>
                 </p>
                 <p className="secondary-text-color">{formattedJoinedDate}</p>
               </div>
@@ -88,7 +92,7 @@ function Card({
         </div>
         <div
           id="user-loc-info"
-          className="grid xl:grid-cols-2 text-left xl:gap-x-10 gap-y-4"
+          className="grid xl:grid-cols-2 text-left xl:gap-x-10 xl:gap-y-0"
         >
           <p className="main-text--white icon icon-city flex gap-x-3">
             {location}
