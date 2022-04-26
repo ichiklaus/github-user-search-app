@@ -14,8 +14,7 @@
 
 #root,
 html,
-body,
-.App {
+body {
   height: 100%;
 }
 :root {
@@ -29,6 +28,7 @@ body,
   --logo-color: #fff;
   --secondary-text-color: #697c9a;
   --secondary-heading-color: #697c9ad2;
+  --shadow-color: #1e2a477d;
 }
 
 :root body.light-theme {
@@ -38,6 +38,7 @@ body,
   --logo-color: #222731;
   --secondary-text-color: #697c9a;
   --secondary-heading-color: #2b3442;
+  --shadow-color: #697c9ad2;
 }
 
 body {
@@ -57,10 +58,14 @@ body {
   transition: 500ms linear;
 }
 
-#search-user,
-#user-card {
+#search-user {
   background-color: var(--inner-bg-color) !important;
-  caret-color: var(--logo-color);
+  caret-color: var(--logo-color) !important;
+  color: var(--logo-color);
+}
+
+#user-wrapper {
+  background-color: var(--inner-bg-color) !important;
 }
 
 .user-stats--bg {
@@ -116,20 +121,29 @@ body {
   column-gap: 10px;
 }
 
-.icon.icon-moon {
+.icon.icon-moon,
+.icon.icon-sun {
   text-align: center;
   margin-top: 0.35rem;
 }
 
-.icon.icon-moon:hover {
+.icon.icon-moon:hover,
+.icon.icon-sun:hover {
   cursor: pointer;
 }
 
 .icon.icon-moon::after {
+  content: url("./assets/icon-moon.svg");
+}
+
+.icon.icon-sun::after {
   content: url("./assets/icon-sun.svg");
 }
 
-#search-user:active, #search-user:focus {
-  background-color: var(--inner-bg-color) !important;
-  caret-color: var(--inner-bg-color) !important;
+.theme-shadow {
+  box-shadow: var(--shadow-color) 0px 0px 20px -5px;
+}
+
+.theme-shadow.card {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }

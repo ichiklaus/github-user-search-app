@@ -4,9 +4,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 
 // CSS imports
-import "./index.css"
-
-
+import "./index.css";
 
 const element = document.querySelector("#root");
 const root = createRoot(element);
