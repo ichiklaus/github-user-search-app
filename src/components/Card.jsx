@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function Card({
   user,
@@ -21,7 +20,6 @@ function Card({
     public_repos: publicRepos,
     bio,
   } = user;
-
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const joinedDate = new Date(createdAt);
   const formattedJoinedDate = joinedDate.toLocaleDateString('en-US', options);
@@ -183,9 +181,24 @@ function Card({
   );
 }
 
-// Card.propTypes = {
-//   user: PropTypes.objectOf(PropTypes.object()).isRequired,
-//   exists: PropTypes.bool.isRequired,
-// };
+Card.propTypes = {
+  // user: PropTypes.instanceOf(Object).isRequired,
+  user: PropTypes.shape({
+    login: PropTypes.string.isRequired,
+    html_url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    blog: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    twitter_username: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
+    public_repos: PropTypes.number.isRequired,
+    bio: PropTypes.string.isRequired,
+  }).isRequired,
+  exists: PropTypes.bool.isRequired,
+};
 
 export default Card;

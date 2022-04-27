@@ -22,6 +22,11 @@ function Main() {
     getGitUser(username, setUser, setExists);
   }, [setUser, setExists]); // if this doesnt work, remove second parameter
 
+  // const getUser = (username) => {
+  //   setUser(username);
+  //   getGitUser(username, setUser, setExists);
+  // };
+
   return (
     <div className="flex flex-col justify-center">
       <Search getUser={getUser} />
