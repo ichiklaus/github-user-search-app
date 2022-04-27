@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import {
+  React, useState,
+} from 'react';
 
 /* Initial theme: dark mode */
 const THEME = document.body.classList;
@@ -7,17 +9,16 @@ function Header() {
   const [theme, setTheme] = useState(false);
 
   function toggleTheme() {
-    // Initial state is false; if theme is not light and state is false, then add the light theme and set the state to true
-    if (!THEME.contains("light-theme") && !theme) {
-      THEME.add("light-theme");
+    /* Initial state is false; if theme is not light and state is false,
+    then add the light theme and set the state to true */
+    if (!THEME.contains('light-theme') && !theme) {
+      THEME.add('light-theme');
       setTheme(true);
     } else {
-      THEME.remove("light-theme");
+      THEME.remove('light-theme');
       setTheme(false);
     }
   }
-
-  console.log("🚀 ~ file: Header.jsx ~ line 5 ~ Header ~ theme", theme);
 
   return (
     <div className="flex flex-row justify-between">
@@ -26,13 +27,22 @@ function Header() {
       </div>
       <div id="theme-toggler" className="flex justify-center items-center">
         <p className="main-text--white text-xl font-semibold">
-          {" "}
-          {!theme ? "LIGHT" : "DARK"}{" "}
+          {' '}
+          {!theme ? 'LIGHT' : 'DARK'}
+          {' '}
         </p>
-        <i
-          className={!theme ? `icon icon-sun` : `icon icon-moon`}
+        {/* <i
+          role="button"
+          tabIndex="-1"
+          className={!theme ? 'icon icon-sun' : 'icon icon-moon'}
           onClick={toggleTheme}
-        ></i>
+        /> */}
+        <button
+          className={!theme ? 'icon icon-sun' : 'icon icon-moon'}
+          onClick={toggleTheme}
+          type="button"
+          aria-label="theme-toggler"
+        />
       </div>
     </div>
   );

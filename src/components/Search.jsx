@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Search({ getUser }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState('');
   function onSubmit(e) {
     e.preventDefault();
     getUser(user);
@@ -34,5 +35,7 @@ function Search({ getUser }) {
     </form>
   );
 }
+
+Search.propTypes = { getUser: PropTypes.func.isRequired };
 
 export default Search;

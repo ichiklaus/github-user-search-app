@@ -1,31 +1,36 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
+// import PropTypes from 'prop-types';
+
 function Card({
-  user: {
+  user,
+  exists,
+}) {
+  const {
     login,
-    html_url,
+    html_url: htmlUrl,
     name,
-    avatar_url,
+    avatar_url: avatarUrl,
     company,
     blog,
     location,
-    twitter_username,
+    twitter_username: twitterUsername,
     followers,
     following,
-    created_at,
-    public_repos,
+    created_at: createdAt,
+    public_repos: publicRepos,
     bio,
-  },
-  exists,
-}) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  const joinedDate = new Date(created_at);
-  const formattedJoinedDate = joinedDate.toLocaleDateString("en-US", options);
+  } = user;
+
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const joinedDate = new Date(createdAt);
+  const formattedJoinedDate = joinedDate.toLocaleDateString('en-US', options);
 
   function getTwitterLink(typeOfInput) {
-    if (typeOfInput === "link") {
-      return twitter_username ? `https://twitter.com/${twitter_username}` : "";
-    } else if (typeOfInput === "text") {
-      return twitter_username ? twitter_username : "Not available";
+    if (typeOfInput === 'link') {
+      return twitterUsername ? `https://twitter.com/${twitterUsername}` : '';
     }
+    return twitterUsername || 'Not available';
   }
 
   return (
@@ -40,8 +45,8 @@ function Card({
         <div className="grid xl:grid-rows-4 xl:grid-flow-col gap-y-4 gap-x-6 rounded-xl px-5 py-6 ">
           <div id="user-picture" className="xl:row-span-4">
             <img
-              src={avatar_url}
-              alt={"username"}
+              src={avatarUrl}
+              alt="username"
               className="main-text--white w-24 h-24 rounded-full"
             />
           </div>
@@ -65,8 +70,8 @@ function Card({
                       className="main-text--white flex flex-col"
                     >
                       <span>{name}</span>
-                      <a className="hover:underline text--blue" href={html_url}>
-                        {" "}
+                      <a className="hover:underline text--blue" href={htmlUrl}>
+                        {' '}
                         <span>{`@${login}`}</span>
                       </a>
                     </p>
@@ -79,33 +84,33 @@ function Card({
               <p className="secondary-text-color">{bio}</p>
             </div>
             {/* End of User main info like username, name, github url */}
-            {/* ------------------------------------------------------------------------------------------------------------------------------ */}
+            {/* -------------------------------------------------------------------------------- */}
             {/* Start of User stats info */}
             <div
               id="user-stats"
               className="flex xl:flex-row justify-between xl:items-center xl:gap-x-20 user-stats--bg rounded-lg xl:px-4 px-2 py-3 text-left"
             >
               <p className="flex flex-col">
-                <span className="secondary-heading-color">{"Repos"}</span>
+                <span className="secondary-heading-color">Repos</span>
                 <span className="main-text--white font-bold text-xl">
-                  {public_repos}
+                  {publicRepos}
                 </span>
               </p>
               <p className="flex flex-col">
-                <span className="secondary-heading-color">{"Followers"}</span>
+                <span className="secondary-heading-color">Followers</span>
                 <span className="main-text--white font-bold text-xl">
                   {followers}
                 </span>
               </p>
               <p className="flex flex-col">
-                <span className="secondary-heading-color">{"Following"}</span>
+                <span className="secondary-heading-color">Following</span>
                 <span className="main-text--white font-bold text-xl">
                   {following}
                 </span>
               </p>
             </div>
             {/* End of User stats info */}
-            {/* ------------------------------------------------------------------------------------------------------------------------------ */}
+            {/* -------------------------------------------------------------------------------- */}
             {/* Start of User social and location info */}
             <div
               id="user-loc-info"
@@ -114,7 +119,7 @@ function Card({
               {/* Render user current location info */}
               {!location && (
                 <p className="secondary-text-color icon icon-city flex gap-x-4 break-all">
-                  {"Not available"}
+                  Not available
                 </p>
               )}
               {location && (
@@ -125,17 +130,17 @@ function Card({
               {/* Render user current location info */}
 
               {/* Render twitter social */}
-              {!twitter_username && (
+              {!twitterUsername && (
                 <p className="secondary-text-color icon icon-social flex gap-x-4 break-all">
-                  {getTwitterLink("text")}
+                  {getTwitterLink('text')}
                 </p>
               )}
-              {twitter_username && (
+              {twitterUsername && (
                 <a
-                  href={`https://twitter.com/${twitter_username}`}
+                  href={`https://twitter.com/${twitterUsername}`}
                   className="main-text--white icon icon-social flex gap-x-4 hover:underline break-all"
                 >
-                  {getTwitterLink("text")}
+                  {getTwitterLink('text')}
                 </a>
               )}
               {/* Render twitter social */}
@@ -143,7 +148,7 @@ function Card({
               {/* Render blog/website */}
               {!blog && (
                 <p className="secondary-text-color icon icon-website flex gap-x-4 break-all">
-                  {"Not abailable"}
+                  Not abailable
                 </p>
               )}
               {blog && (
@@ -159,7 +164,7 @@ function Card({
               {/* Render company info */}
               {!company && (
                 <p className="secondary-text-color icon icon-company flex gap-x-4 break-all">
-                  {"Not available"}
+                  Not available
                 </p>
               )}
               {company && (
@@ -177,5 +182,10 @@ function Card({
     </div>
   );
 }
+
+// Card.propTypes = {
+//   user: PropTypes.objectOf(PropTypes.object()).isRequired,
+//   exists: PropTypes.bool.isRequired,
+// };
 
 export default Card;

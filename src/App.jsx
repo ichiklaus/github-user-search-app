@@ -1,5 +1,7 @@
-import Main from "./layouts/Main";
-import Header from "./layouts/Header";
+import React from 'react';
+
+import Main from './layouts/Main';
+import Header from './layouts/Header';
 
 function App() {
   return (

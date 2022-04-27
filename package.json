@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel serve --open msedge -p 1000",
     "build": "parcel build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,18 @@
   "homepage": "https://github.com/ichiklaus/github-user-search-app#readme",
   "dependencies": {
     "axios": "^0.26.1",
+    "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "parcel": "^2.4.1",
     "postcss": "^8.4.12",
     "process": "^0.11.10",
