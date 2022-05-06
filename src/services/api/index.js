@@ -29,7 +29,7 @@ async function getGitUser(username, setFunc, setBool) {
   }
 }
 
-const fetcher = (url) => axios.get(url);
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 function FetchGitHubUser(username, setFunc, setBool) {
   const { data, error } = useSWR(`${TOKENIZED_API_URL}${username}`, fetcher);
   if (error) setBool(false);
