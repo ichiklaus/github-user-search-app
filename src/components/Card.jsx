@@ -146,7 +146,7 @@ function Card({
               {/* Render blog/website */}
               {!blog && (
                 <p className="secondary-text-color icon icon-website flex gap-x-4 break-all">
-                  Not abailable
+                  Not available
                 </p>
               )}
               {blog && (

@@ -5,7 +5,8 @@ import {
 import Search from '../components/Search';
 import Card from '../components/Card';
 
-import getGitUser from '../services/getUser';
+// import getGitUser from '../services/getUser';
+import { FetchGitHubUser } from '../services/api/index';
 
 function Main() {
   const [user, setUser] = useState('');
@@ -13,13 +14,13 @@ function Main() {
 
   // Fetches data for the first time
   useEffect(() => {
-    getGitUser('octocat', setUser, setExists);
+    FetchGitHubUser('octocat', setUser, setExists);
   }, []);
 
   // executed on child
   const getUser = useCallback((username) => {
     setUser(username);
-    getGitUser(username, setUser, setExists);
+    FetchGitHubUser(username, setUser, setExists);
   }, [setUser, setExists]); // if this doesnt work, remove second parameter
 
   // const getUser = (username) => {
